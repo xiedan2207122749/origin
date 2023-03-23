@@ -18,7 +18,7 @@
         <dependency>
             <groupId>com.thinkifu.origin</groupId>
             <artifactId>commons</artifactId>
-            <version>0.0.1</version>
+            <version>0.0.1-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>com.github.axet</groupId>
