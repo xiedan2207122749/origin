@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.thinkifu.origin.manage.dao.GameDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.thinkifu.origin.commons.entity.GameEntity" id="pageResultMap">
+        <result property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="englishName" column="english_name"/>
+        <result property="releaseDate" column="release_date"/>
+        <result property="releaseCompany" column="release_company"/>
+        <result property="language" column="language"/>
+        <result property="ageDivision" column="age_division"/>
+        <result property="alias" column="alias"/>
+        <result property="platform" column="platform"/>
+        <result property="introduceImage" column="introduce_image"/>
+        <result property="introduction" column="introduction"/>
+        <result property="contentDescription" column="content_description"/>
+        <result property="score" column="score"/>
+        <result property="fileSize" column="file_size"/>
+        <result property="type" column="type"/>
+        <result property="createTime" column="create_time"/>
+        <collection property="dictValueList" ofType="string" javaType="list" column="value" />
+    </resultMap>
+
+    <select id="page" resultMap="pageResultMap">
+        select tg.id,
+        tg.name,
+        tg.english_name,
+        tg.release_date,
+        tg.release_company,
+        tg.language,
+        tg.age_division,
+        tg.alias,
+        tg.platform,
+        tg.introduce_image,
+        tg.introduction,
+        tg.content_description,
+        tg.score,
+        tg.file_size,
+        tg.type,
+        tg.create_time,
+        td.value
+        from tb_game tg
+        join tb_game_dict tgd on tg.id = tgd.game_id
+        join tb_dict td on tgd.dict_id = td.id
+        <where>
+            tg.deleted = 0
+            <if test="form.englishName != null and form.englishName.trim() != ''">
+                and tg.english_name like concat(#{form.englishName}, '%')
+            </if>
+            <if test="form.name != null and form.name.trim() != ''">
+                and tg.name like concat(#{form.name}, '%')
+            </if>
+            <if test="form.type != null">
+                and tg.type = #{form.type}
+            </if>
+            <if test="form.dictId != null">
+                and tgd.dict_id = #{form.dictId}
+            </if>
+        </where>
+        order by tg.id desc
+    </select>
+
+
+</mapper>

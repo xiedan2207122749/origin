@@ -12,8 +12,8 @@ import lombok.Getter;
 @Getter
 public enum ManageErrorEnum {
     
-    OTA_FILE_NOT_NULL(0, "OTA_FILE_NOT_NULL"),
-    VERSION_NUMBER_EXIST(1, "VERSION_NUMBER_EXIST"),
+    FILE_NOT_NULL(0, "文件不能为空"),
+    FILE_UPLOAD_ERROR(1, "文件上传失败"),
 
     
     UNKNOWN_ERROR(999, "UNKNOWN_ERROR");

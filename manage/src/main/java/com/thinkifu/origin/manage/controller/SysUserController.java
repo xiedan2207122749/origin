@@ -1,24 +1,17 @@
 package com.thinkifu.origin.manage.controller;
 
-import com.google.code.kaptcha.Producer;
 import com.thinkifu.origin.commons.form.LoginForm;
 import com.thinkifu.origin.commons.util.Result;
-import com.thinkifu.origin.commons.validator.AddGroup;
+import com.thinkifu.origin.manage.service.SysUserService;
+import com.thinkifu.origin.manage.vo.LoginSuccessVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.*;
-
-import javax.imageio.ImageIO;
-import javax.servlet.ServletOutputStream;
-import javax.servlet.http.HttpServletResponse;
-import javax.validation.groups.Default;
-import java.awt.image.BufferedImage;
-import java.io.IOException;
-import java.util.concurrent.TimeUnit;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * @author xieDan
@@ -38,7 +31,9 @@ public class SysUserController {
 
     @PostMapping("/login")
     @ApiOperation("登录")
-    public Result<String> login(@RequestBody LoginForm form) {
+    public Result<LoginSuccessVO> login(@RequestBody LoginForm form) {
         return Result.ok(sysUserService.login(form));
     }
+
+
 }

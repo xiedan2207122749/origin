@@ -2,6 +2,7 @@ package com.thinkifu.origin.commons.form;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -32,8 +33,10 @@ public class PageForm {
     @Min(value = 1, message = "当前页不在取值范围内")
     @ApiModelProperty("当前页")
     private Integer currPage = 1;
-    
-    public <T>IPage<T> createPage() {
+
+    @JsonIgnore
+    public <T>IPage<T> getPage() {
         return new Page<T>(currPage, pageSize);
     }
+
 }

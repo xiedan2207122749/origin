@@ -3,7 +3,7 @@ spring:
     type: com.alibaba.druid.pool.DruidDataSource
     druid:
       driver-class-name: com.mysql.cj.jdbc.Driver
-      url: jdbc:mysql://localhost:3306/origin?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai&allowMultiQueries=true
+      url: jdbc:mysql://43.143.148.109:3306/origin?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai&allowMultiQueries=true
       username: root
       password: 7C45BCDA985BFF078EB51827FA372251
       initial-size: 10
@@ -47,9 +47,9 @@ spring:
 
 file:
   upload:
-    prefix: D:/usr/local/file
-    serverIp: http://192.168.0.64/
-    otaSite: /otaFile
+    server:
+      serverIp: http://15973488008.gnway.cc:8000/
+      prefix: E:/usr/local/file/
 
 logging:
   level:

@@ -47,10 +47,9 @@ spring:
 
 file:
   upload:
-    prefix: /usr/local/file
-    serverIp: https://aikankan.urion.com.cn/
-    otaSite: /otaFile
-
+    server:
+      serverIp: https://www.18890008111.com/
+      prefix: /usr/local/file/
 logging:
   level:
     com.smcx.**.*: info

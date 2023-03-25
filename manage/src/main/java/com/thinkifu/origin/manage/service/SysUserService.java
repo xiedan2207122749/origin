@@ -3,6 +3,7 @@ package com.thinkifu.origin.manage.service;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.thinkifu.origin.commons.entity.SysUserEntity;
 import com.thinkifu.origin.commons.form.LoginForm;
+import com.thinkifu.origin.manage.vo.LoginSuccessVO;
 
 /**
  * 后台用户表
@@ -17,6 +18,6 @@ public interface SysUserService extends IService<SysUserEntity> {
      * @param form
      * @return
      */
-    String login(LoginForm form);
+    LoginSuccessVO login(LoginForm form);
 }
 

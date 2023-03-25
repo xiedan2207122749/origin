@@ -1,6 +1,5 @@
 package com.thinkifu.origin.manage.util;
 
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
@@ -14,14 +13,11 @@ import javax.annotation.PostConstruct;
  */
 @Component
 public class SysConstant {
-    
-    @Value("${file.upload.otaSite}")
-    private String otaSite;
-    public static String OTA_SITE;
+
     
     @PostConstruct
     public void init() {
-        OTA_SITE = otaSite;
+
     }
     
     /**
