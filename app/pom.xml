@@ -17,6 +17,11 @@
 
     <dependencies>
         <dependency>
+            <groupId>com.thinkifu.origin</groupId>
+            <artifactId>commons</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+        <dependency>
             <groupId>com.aliyun</groupId>
             <artifactId>dysmsapi20170525</artifactId>
         </dependency>

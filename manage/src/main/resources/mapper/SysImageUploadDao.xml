@@ -15,13 +15,4 @@
         <result property="updateTime" column="update_time"/>
         <result property="deleted" column="deleted"/>
     </resultMap>
-
-    <update id="updateBatchUsedByPreFileName">
-        update sys_image_upload set use_flag = 1 where pre_file_name in
-        <foreach collection="preFileNameList" item="item" open="(" close=")" separator=",">
-            #{item}
-        </foreach>
-    </update>
-
-
 </mapper>

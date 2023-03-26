@@ -78,15 +78,10 @@ public class GameEntity implements Serializable {
 	@ApiModelProperty("介绍图")
     private String introduceImage;
 	/**
-	 * 简介
+	 * 是否可用 1:可用0:不可用
 	 */
-	@ApiModelProperty("简介")
-    private String introduction;
-	/**
-	 * 内容描述
-	 */
-	@ApiModelProperty("内容描述")
-    private String contentDescription;
+	@ApiModelProperty("是否可用 1:可用0:不可用")
+    private Integer availableFlag;
 	/**
 	 * 评分
 	 */
@@ -127,5 +122,18 @@ public class GameEntity implements Serializable {
 	@TableField(exist = false)
 	@ApiModelProperty("字典值")
 	private List<String> dictValueList;
+
+	/**
+	 * 简介
+	 */
+	@TableField(exist = false)
+	@ApiModelProperty("简介")
+	private String introduction;
+	/**
+	 * 内容描述
+	 */
+	@TableField(exist = false)
+	@ApiModelProperty("内容描述")
+	private String contentDescription;
 
 }

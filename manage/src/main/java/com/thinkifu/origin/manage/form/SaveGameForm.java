@@ -88,6 +88,11 @@ public class SaveGameForm {
     @ApiModelProperty("1.电脑游戏 2.手机游戏")
     private Integer type;
     /**
+     * 是否可用 1:可用 0: 不可用
+     */
+    @ApiModelProperty("是否可用 1:可用 0: 不可用")
+    private Integer availableFlag;
+    /**
      * 1.是被推荐 0:不是被推荐
      */
     @ApiModelProperty("1.是被推荐 0:不是被推荐")

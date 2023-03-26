@@ -18,5 +18,17 @@ public interface SysImageUploadService extends IService<SysImageUploadEntity> {
      * @param linkList
      */
     void updateBatchUsedByLink(List<String> linkList);
+
+    /**
+     * 修改为已使用 通过图片链接
+     * @param link
+     */
+    void updateUsedByLink(String link);
+
+    /**
+     * 删除原先的图片
+     * @param link
+     */
+    void removeByLink(String link);
 }
 

@@ -3,7 +3,7 @@ package com.thinkifu.origin.manage.service;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.thinkifu.origin.commons.entity.SysUserEntity;
 import com.thinkifu.origin.commons.form.LoginForm;
-import com.thinkifu.origin.manage.vo.LoginSuccessVO;
+import com.thinkifu.origin.commons.vo.LoginSuccessVO;
 
 /**
  * 后台用户表

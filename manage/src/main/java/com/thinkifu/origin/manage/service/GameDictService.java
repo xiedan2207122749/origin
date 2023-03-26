@@ -2,6 +2,7 @@ package com.thinkifu.origin.manage.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.thinkifu.origin.commons.entity.GameDictEntity;
+import com.thinkifu.origin.manage.form.SaveGameDictForm;
 
 import java.util.List;
 
@@ -19,5 +20,11 @@ public interface GameDictService extends IService<GameDictEntity> {
      * @param gameId
      */
     void add(List<Long> dictIdList, Long gameId);
+
+    /**
+     * 修改游戏字典
+     * @param form
+     */
+    void update(SaveGameDictForm form);
 }
 

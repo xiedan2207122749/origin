@@ -15,9 +15,8 @@
         <result property="alias" column="alias"/>
         <result property="platform" column="platform"/>
         <result property="introduceImage" column="introduce_image"/>
-        <result property="introduction" column="introduction"/>
-        <result property="contentDescription" column="content_description"/>
         <result property="score" column="score"/>
+        <result property="availableFlag" column="available_flag"/>
         <result property="fileSize" column="file_size"/>
         <result property="type" column="type"/>
         <result property="createTime" column="create_time"/>
@@ -35,16 +34,15 @@
         tg.alias,
         tg.platform,
         tg.introduce_image,
-        tg.introduction,
-        tg.content_description,
         tg.score,
+        tg.available_flag,
         tg.file_size,
         tg.type,
         tg.create_time,
         td.value
         from tb_game tg
-        join tb_game_dict tgd on tg.id = tgd.game_id
-        join tb_dict td on tgd.dict_id = td.id
+        left join tb_game_dict tgd on tg.id = tgd.game_id
+        left join tb_dict td on tgd.dict_id = td.id
         <where>
             tg.deleted = 0
             <if test="form.englishName != null and form.englishName.trim() != ''">

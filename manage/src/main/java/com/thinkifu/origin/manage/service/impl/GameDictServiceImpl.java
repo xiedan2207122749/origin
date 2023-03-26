@@ -1,10 +1,13 @@
 package com.thinkifu.origin.manage.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.thinkifu.origin.commons.entity.GameDictEntity;
 import com.thinkifu.origin.manage.dao.GameDictDao;
+import com.thinkifu.origin.manage.form.SaveGameDictForm;
 import com.thinkifu.origin.manage.service.GameDictService;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -35,5 +38,17 @@ public class GameDictServiceImpl extends ServiceImpl<GameDictDao, GameDictEntity
             return gameDictEntity;
         }).collect(Collectors.toList());
         this.saveBatch(gameDictEntityList);
+    }
+
+    /**
+     * 修改游戏字典
+     *
+     * @param form
+     */
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public void update(SaveGameDictForm form) {
+        this.remove(new QueryWrapper<GameDictEntity>().eq("game_id", form.getGameId()));
+        add(form.getDictIdList(), form.getGameId());
     }
 }

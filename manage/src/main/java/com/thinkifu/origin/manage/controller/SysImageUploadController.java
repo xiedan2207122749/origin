@@ -54,6 +54,7 @@ public class SysImageUploadController {
         String fileSite = uploadService.uploadImage(file, fileName, EnumUtil.getEnum(fileType, FileFolderEnum.class).getStrValue());
         SysImageUploadEntity entity = new SysImageUploadEntity();
         entity.setLink(fileSite);
+        entity.setPreFileName(Long.parseLong(fileName));
         entity.setCreatorUserId(UserContext.getUserId());
         entity.setType(fileType);
         sysImageUploadService.save(entity);

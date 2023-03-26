@@ -2,6 +2,7 @@ package com.thinkifu.origin.manage.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.thinkifu.origin.commons.entity.GameImageEntity;
+import com.thinkifu.origin.manage.form.SaveGameImageForm;
 
 import java.util.List;
 
@@ -19,5 +20,11 @@ public interface GameImageService extends IService<GameImageEntity> {
      * @param gameId
      */
     void add(List<String> imageList, Long gameId);
+
+    /**
+     * 保存游戏图片
+     * @param form
+     */
+    void update(SaveGameImageForm form);
 }
 

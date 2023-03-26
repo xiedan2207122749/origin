@@ -27,5 +27,11 @@ public interface GameService extends IService<GameEntity> {
      * @param form
      */
     void add(SaveGameForm form);
+
+    /**
+     * 修改游戏
+     * @param form
+     */
+    void update(SaveGameForm form);
 }
 

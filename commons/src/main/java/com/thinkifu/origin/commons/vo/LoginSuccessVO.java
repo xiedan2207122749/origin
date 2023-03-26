@@ -1,4 +1,4 @@
-package com.thinkifu.origin.manage.vo;
+package com.thinkifu.origin.commons.vo;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;

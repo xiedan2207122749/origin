@@ -12,7 +12,8 @@ import lombok.Getter;
 @Getter
 public enum AppErrorEnum {
     
-    ACCOUNT_EXIST(0, "ACCOUNT_EXIST"),
+    ACCOUNT_EXIST(0, "账号已经存在"),
+    USERNAME_EXIST(1, "用户名称已经存在"),
     ACCOUNT_NOT_EXIST(1, "ACCOUNT_NOT_EXIST"),
     EXCEED_MAX_SEND_TIME(2, "EXCEED_MAX_SEND_TIME"),
     EMAIL_SEND_ERROR(3, "EMAIL_SEND_ERROR"),

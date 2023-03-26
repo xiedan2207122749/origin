@@ -1,4 +1,4 @@
-package com.thinkifu.origin.manage.util;
+package com.thinkifu.origin.app.util;
 
 import org.springframework.stereotype.Component;
 
@@ -12,7 +12,7 @@ import javax.annotation.PostConstruct;
  * @Created by mr_xie
  */
 @Component
-public class SysConstant {
+public class AppConstant {
 
     
     @PostConstruct
@@ -23,5 +23,5 @@ public class SysConstant {
     /**
      * 后台 token有效时间 (秒为单位) 30分钟有效期
      */
-    public static final long TOKEN_EXPIRE_TIME = 3600 * 24 * 15;
+    public static final long TOKEN_EXPIRE_TIME = 3600;
 }

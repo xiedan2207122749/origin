@@ -11,7 +11,7 @@ import com.thinkifu.origin.commons.util.LoginSecurityCheckUtil;
 import com.thinkifu.origin.manage.dao.SysUserDao;
 import com.thinkifu.origin.manage.service.SysUserService;
 import com.thinkifu.origin.manage.util.SysConstant;
-import com.thinkifu.origin.manage.vo.LoginSuccessVO;
+import com.thinkifu.origin.commons.vo.LoginSuccessVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
