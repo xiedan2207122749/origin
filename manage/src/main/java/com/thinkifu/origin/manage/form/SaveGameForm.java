@@ -1,5 +1,6 @@
 package com.thinkifu.origin.manage.form;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -36,6 +37,7 @@ public class SaveGameForm {
      * 发售时间
      */
     @ApiModelProperty("发售时间")
+    @JsonFormat(locale = "zh", timezone = "GMT+8", pattern = "yyyy-MM-dd")
     private LocalDate releaseDate;
     /**
      * 发行厂商

@@ -3,6 +3,7 @@ package com.thinkifu.origin.manage.controller;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.thinkifu.origin.commons.entity.*;
+import com.thinkifu.origin.commons.enums.WhetherEnum;
 import com.thinkifu.origin.commons.util.Result;
 import com.thinkifu.origin.manage.form.SaveGameDictForm;
 import com.thinkifu.origin.manage.form.SaveGameForm;
@@ -84,7 +85,7 @@ public class GameController {
     @GetMapping("/getGameDictId")
     @ApiOperation("获取游戏字典id")
     public Result<List<Long>> getGameDictId(@RequestParam Long gameId) {
-        return Result.ok(gameDictService.listObjs(new QueryWrapper<GameDictEntity>().select("dict_id").eq("game_id", gameId), item -> (long) item));
+        return Result.ok(gameDictService.listObjs(new QueryWrapper<GameDictEntity>().select("dict_id").eq("game_id", gameId), item -> Long.parseLong(item.toString())));
     }
 
     @PostMapping("/updateGameDict")
@@ -101,16 +102,23 @@ public class GameController {
     }
 
     @PostMapping("/saveGameSite")
-    @ApiOperation("修改游戏字典")
+    @ApiOperation("保存游戏位置")
     public Result updateGameDict(@RequestBody GameSiteEntity entity) {
         gameSiteService.saveOrUpdate(entity);
         return Result.ok();
     }
 
     @PostMapping("/deleteGameSite/{gameSiteId}")
-    @ApiOperation("删除游戏位置")
+    @ApiOperation("删除游戏位置位置")
     public Result deleteGameSite(@PathVariable Long gameSiteId) {
         gameSiteService.removeById(gameSiteId);
+        return Result.ok();
+    }
+
+    @PostMapping("/deleteGame/{gameId}")
+    @ApiOperation("删除游戏位置")
+    public Result deleteGame(@PathVariable Long gameId) {
+        gameService.removeById(gameId);
         return Result.ok();
     }
 
@@ -124,6 +132,30 @@ public class GameController {
     @ApiOperation("保存游戏图片")
     public Result saveGameImage(@RequestBody SaveGameImageForm form) {
         gameImageService.update(form);
+        return Result.ok();
+    }
+
+    @PostMapping("/updateRecommend/{gameId}")
+    @ApiOperation("修改是否推荐")
+    public Result updateRecommend(@PathVariable Long gameId) {
+        Integer recommendFlag = gameService.getObj(new QueryWrapper<GameEntity>().select("recommend_flag").eq("id", gameId), item -> (int) item);
+        if (recommendFlag == WhetherEnum.YES.getValue()) {
+            gameService.update().set("recommend_flag", WhetherEnum.NO.getValue()).eq("id", gameId).last("limit 1").update();
+        } else {
+            gameService.update().set("recommend_flag", WhetherEnum.YES.getValue()).eq("id", gameId).last("limit 1").update();
+        }
+        return Result.ok();
+    }
+
+    @PostMapping("/updateAvailable/{gameId}")
+    @ApiOperation("修改上下架")
+    public Result updateAvailable(@PathVariable Long gameId) {
+        Integer availableFlag = gameService.getObj(new QueryWrapper<GameEntity>().select("available_flag").eq("id", gameId), item -> (int) item);
+        if (availableFlag == WhetherEnum.YES.getValue()) {
+            gameService.update().set("available_flag", WhetherEnum.NO.getValue()).eq("id", gameId).last("limit 1").update();
+        } else {
+            gameService.update().set("available_flag", WhetherEnum.YES.getValue()).eq("id", gameId).last("limit 1").update();
+        }
         return Result.ok();
     }
 }

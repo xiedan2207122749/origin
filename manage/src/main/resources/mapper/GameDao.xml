@@ -19,8 +19,11 @@
         <result property="availableFlag" column="available_flag"/>
         <result property="fileSize" column="file_size"/>
         <result property="type" column="type"/>
+        <result property="recommendFlag" column="recommend_flag"/>
         <result property="createTime" column="create_time"/>
-        <collection property="dictValueList" ofType="string" javaType="list" column="value" />
+        <collection property="dictValueList" ofType="string" javaType="list" column="value">
+            <result column="value"/>
+        </collection>
     </resultMap>
 
     <select id="page" resultMap="pageResultMap">
@@ -39,7 +42,8 @@
         tg.file_size,
         tg.type,
         tg.create_time,
-        td.value
+        td.value,
+        tg.recommend_flag
         from tb_game tg
         left join tb_game_dict tgd on tg.id = tgd.game_id
         left join tb_dict td on tgd.dict_id = td.id
